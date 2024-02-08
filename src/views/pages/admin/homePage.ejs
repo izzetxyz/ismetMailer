@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/general/img/favicon.png">
+	<title>KeepGames | Mailing</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<header class="bg-gray-200">
+	<div class="container mx-auto py-4 flex justify-between items-center">
+		<h1 class="text-xl font-bold">KeepGames Mailing</h1>
+		<div>
+			<a href="/izzycodes" class="mr-4">Anasayfa</a>
+		  <a href="/izzycodes/sifredegistir" class="mr-4">Şifre Değiştir</a>
+		  <a href="/izzycodes/logout">Çıkış Yap</a>
+		</div>
+	  </div>
+	  
+</header>
+<body>
+	
+	<div class="container">
+    
+		<br>
+		<br>
+		<% if (locals.validation_error != undefined || locals.success_message != undefined || locals.login_error != undefined) { %>
+		<%- include('../../partials/_mesaj') %> 
+			<% } %>
+
+		<!-- Firma Ekle Formu -->
+		<div id="firmaEkle">
+			<form action="/izzycodes/sendMail" method="post" enctype="application/x-www-form-urlencoded">
+				<div class="form-group">
+					<label for="firmaAdi">Mail Konusu:</label>
+					<input name="Mail_Title" type="text" class="form-control" id="firmaAdi">
+				</div>
+				<div class="form-group">
+					<label for="firmaAdi">Mail İçeriği:</label>
+					<textarea name="Mail_Content" type="text" class="form-control" id="firmaAdi"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="firmaAdi">Mail Gönderilecek Adresler(Her Satıra 1 mail gelmelidir.):</label>
+					<textarea name="Mail_Addresses" type="text" class="form-control" id="firmaAdi"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Gönder</button>
+			</form>
+		</div>
+    </div>
+  </div>
+  
+  <!-- jQuery ve Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <script>
+    // Formu gösteren fonksiyon
+    function formuGoster() {
+      var secim = document.getElementById("secim").value;
+      if (secim == "0") {
+        document.getElementById("firmaEkle").style.display = "block";
+        document.getElementById("kullaniciEkle").style.display = "none";
+      } else {
+        document.getElementById("kullaniciEkle").style.display = "block";
+        document.getElementById("firmaEkle").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>  
+          
